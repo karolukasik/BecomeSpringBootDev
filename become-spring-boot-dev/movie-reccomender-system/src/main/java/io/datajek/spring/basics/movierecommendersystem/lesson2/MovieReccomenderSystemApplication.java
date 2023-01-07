@@ -1,4 +1,4 @@
-package io.datajek.spring.basics.movierecommendersystem.lesson1;
+package io.datajek.spring.basics.movierecommendersystem.lesson2;
 
 import java.util.Arrays;
 
