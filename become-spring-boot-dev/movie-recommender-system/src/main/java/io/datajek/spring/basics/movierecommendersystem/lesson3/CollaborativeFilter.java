@@ -1,4 +1,4 @@
-package io.datajek.spring.basics.movierecommendersystem.lesson2;
+package io.datajek.spring.basics.movierecommendersystem.lesson3;
 
 public class CollaborativeFilter implements Filter {
 

@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MovieReccomenderSystemApplication {
 
 	public static void main(String[] args) {
-		//SpringApplication.run(MovieReccomenderSystemApplication.class, args);
-		RecommenderImplementation recommender = new RecommenderImplementation();
+		// SpringApplication.run(MovieReccomenderSystemApplication.class, args);
+		RecommenderImplementation recommender = new RecommenderImplementation(new CollaborativeFilter());
 		String[] result = recommender.recommendMovies("Finding Dorry");
 		System.out.println(Arrays.toString(result));
 	}
