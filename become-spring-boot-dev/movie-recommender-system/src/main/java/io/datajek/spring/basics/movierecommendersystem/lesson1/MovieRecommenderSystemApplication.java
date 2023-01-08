@@ -6,10 +6,10 @@ import java.util.Arrays;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MovieReccomenderSystemApplication {
+public class MovieRecommenderSystemApplication {
 
 	public static void main(String[] args) {
-		//SpringApplication.run(MovieReccomenderSystemApplication.class, args);
+		//SpringApplication.run(MovieRecommenderSystemApplication.class, args);
 		RecommenderImplementation recommender = new RecommenderImplementation();
 		String[] result = recommender.recommendMovies("Finding Dorry");
 		System.out.println(Arrays.toString(result));
