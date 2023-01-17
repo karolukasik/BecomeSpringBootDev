@@ -13,9 +13,9 @@ public class MovieRecommenderSystemApplication {
 
 		ApplicationContext appContext = SpringApplication.run(MovieRecommenderSystemApplication.class, args);
 
-		// RecommenderImplementation injects dependency using constructor
+		// RecommenderImplementation injects dependency using setter
 		System.out.println("Calling getBean() on RecommenderImplementation");
-		RecommenderImplementation recommender = appContext.getBean(RecommenderImplementation.class);
+		var recommender = appContext.getBean(RecommenderImplementation2.class);
 
 		String[] result = recommender.recommendMovies("Finding Dory");
 		System.out.println(Arrays.toString(result));
