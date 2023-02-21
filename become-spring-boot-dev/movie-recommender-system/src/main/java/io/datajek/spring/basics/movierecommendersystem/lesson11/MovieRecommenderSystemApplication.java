@@ -1,22 +1,25 @@
 package io.datajek.spring.basics.movierecommendersystem.lesson11;
 
-import java.util.Arrays;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class MovieRecommenderSystemApplication {
 
 	public static void main(String[] args) {
 
-		ApplicationContext appContext = SpringApplication.run(MovieRecommenderSystemApplication.class, args);
+		var appContext = SpringApplication.run(MovieRecommenderSystemApplication.class, args);
 
-		RecommenderImplementation recommender = appContext.getBean(RecommenderImplementation.class);
+		var recommender = appContext.getBean(RecommenderImplementation.class);
 
-		String[] result = recommender.recommendMovies("Finding Dorry");
-		System.out.println(Arrays.toString(result));
+		System.out.println("\n\n" + recommender);
+
+		Movie movieOne = appContext.getBean(Movie.class);
+		System.out.println("\n\n" + movieOne);
+
+		Movie movieTwo = appContext.getBean(Movie.class);
+		System.out.println("\n\n" + movieTwo);
+
 	}
 
 }
