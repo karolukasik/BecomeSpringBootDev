@@ -19,9 +19,12 @@ public class MovieRecommenderSystemApplication {
 		var filter5 = appContext.getBean(CollaborativeFilter.class);
 		var filter6 = appContext.getBean(CollaborativeFilter.class);
 
-		// System.out.println(filter1);
-		// System.out.println(filter2);
-		// System.out.println(filter3);
+		System.out.println(filter1);
+		System.out.println(filter2);
+		System.out.println(filter3);
+		System.out.println(filter4);
+		System.out.println(filter5);
+		System.out.println(filter6);
 
 	}
 

@@ -10,13 +10,9 @@ import org.springframework.context.annotation.*;;
 public class Movie {
     private static int instances = 0;
 
-    private int id;
-    private String name;
-    private String genre;
-    private String producer;
 
     public Movie() {
-        this.instances++;
+        instances++;
         System.out.println("Movie constructor called");
     }
 
