@@ -1,7 +1,12 @@
 package io.datajek.spring.basics.movierecommendersystem.lesson14;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 public class RecommenderImplementation {
 
+    @Autowired
+    @Qualifier("CBF")
     private Filter filter;
 
     public RecommenderImplementation(Filter filter) {
@@ -21,6 +26,10 @@ public class RecommenderImplementation {
         String[] results = filter.getRecommendations("Finding Dory");
 
         return results;
+    }
+
+    public Filter getFilter() {
+        return filter;
     }
 
 }

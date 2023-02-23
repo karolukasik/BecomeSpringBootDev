@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-
 public class MovieRecommenderSystemApplication {
 
 	public static void main(String[] args) {
@@ -18,11 +17,8 @@ public class MovieRecommenderSystemApplication {
 		// use ApplicationContext to find which filter is being used
 		var recommender = appContext.getBean("recommenderImplementation", RecommenderImplementation.class);
 
-		// call method to get recommendations
-		String[] result = recommender.recommendMovies("Finding Dory");
-
-		// display results
-		System.out.println(Arrays.toString(result));
+		// print dependency
+		System.out.println("\nDependency: " + recommender.getFilter() + "\n");
 
 		appContext.close();
 
