@@ -1,10 +1,14 @@
 package io.datajek.springdata.tennisplayer;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -47,5 +51,28 @@ public class PlayerDao {
     public int deletePlayerById(int id) {
         var sql = "DELETE FROM PLAYER WHERE ID = ?";
         return jdbcTemplate.update(sql, new Object[] { id });
+    }
+
+    public List<Player> getPlayerByNationality(String nationality) {
+        var sql = "SELECT * FROM PLAYER WHERE NATIONALITY = ?";
+
+        return jdbcTemplate.query(sql, new PlayerMapper(), new Object[] { nationality });
+    }
+
+    private static final class PlayerMapper implements RowMapper<Player> {
+
+        @Override
+        @Nullable
+        public Player mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Player player = new Player();
+            player.setId(rs.getInt("id"));
+            player.setName(rs.getString("name"));
+            player.setNationality(rs.getString("nationality"));
+            player.setBirthDate(rs.getDate("birth_date"));
+            player.setTitles(rs.getInt("titles"));
+
+            return player;
+        }
+
     }
 }
