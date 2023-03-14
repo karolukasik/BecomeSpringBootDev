@@ -1,0 +1,31 @@
+package io.datajek.databaserelationships.onetoone;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@NoArgsConstructor
+@Setter
+@Getter
+public class PlayerProfile {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String twitter;
+
+    public PlayerProfile(String twitter) {
+        this.twitter = twitter;
+    }
+
+    @Override
+    public String toString() {
+        return this.twitter;
+    }
+}
