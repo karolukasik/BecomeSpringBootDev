@@ -19,6 +19,7 @@ public class TournamentService {
     TournamentRepository repo;
 
     public Tournament addTournament(Tournament tournament) {
+        tournament.setId(0);
         return repo.save(tournament);
     }
 

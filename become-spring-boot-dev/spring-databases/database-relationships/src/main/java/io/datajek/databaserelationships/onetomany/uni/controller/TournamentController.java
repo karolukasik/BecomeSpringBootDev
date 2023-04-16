@@ -3,62 +3,60 @@ package io.datajek.databaserelationships.onetomany.uni.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import io.datajek.databaserelationships.onetomany.uni.Registration;
 import io.datajek.databaserelationships.onetomany.uni.Tournament;
 import io.datajek.databaserelationships.onetomany.uni.service.RegistrationService;
 import io.datajek.databaserelationships.onetomany.uni.service.TournamentService;
 
-@Controller
+@RestController
+@RequestMapping("/tournaments")
 public class TournamentController {
-    
-    @Autowired
+
+	@Autowired
 	TournamentService service;
-	
+
 	@Autowired
 	RegistrationService registrationService;
-	
+
 	@GetMapping
 	public List<Tournament> allTournaments() {
-		return service.allTournaments();	    
+		return service.allTournaments();
 	}
 
 	@GetMapping("/{id}")
-	public Tournament getTournament(@PathVariable int id){
+	public Tournament getTournament(@PathVariable int id) {
 		return service.getTournament(id);
 	}
-	
-    @PostMapping
-	public Tournament addTournament(@RequestBody Tournament tournament) {
-    	return service.addTournament(tournament);
-	}
-    
-    @PutMapping("/{id}/registrations/{registration_id}")
-    public Tournament addRegistration(@PathVariable int id, @PathVariable int registration_id) {
-    	Registration registration = registrationService.getRegistration(registration_id); 
-    	System.out.println(registration);
-    	return service.addRegistration(id, registration);
-    }
-		
-    @PutMapping("/{id}/remove_registrations/{registration_id}")
-    public Tournament removeRegistration(@PathVariable int id, @PathVariable int registration_id) {
-    	Registration registration = registrationService.getRegistration(registration_id); 
-    	System.out.println(registration);
-    	return service.removeRegistration(id, registration);
-    }
 
-    @DeleteMapping("/{id}")
+	@PostMapping
+	public Tournament addTournament(@RequestBody Tournament tournament) {
+		return service.addTournament(tournament);
+	}
+
+	@PutMapping("/{id}/registrations/{registration_id}")
+	public Tournament addRegistration(@PathVariable int id, @PathVariable int registration_id) {
+		Registration registration = registrationService.getRegistration(registration_id);
+		return service.addRegistration(id, registration);
+	}
+
+	@PutMapping("/{id}/remove_registrations/{registration_id}")
+	public Tournament removeRegistration(@PathVariable int id, @PathVariable int registration_id) {
+		Registration registration = registrationService.getRegistration(registration_id);
+		return service.removeRegistration(id, registration);
+	}
+
+	@DeleteMapping("/{id}")
 	public void deleteTournament(@PathVariable int id) {
 		service.deleteTournament(id);
-	}   
-
-
+	}
 
 }

@@ -18,6 +18,7 @@ public class RegistrationService {
     RegistrationRepository repo;
 
     public Registration addRegistration(Registration registration) {
+        registration.setId(0);
         return repo.save(registration);
     }
 
@@ -29,10 +30,9 @@ public class RegistrationService {
         return optReg.get();
     }
 
-    public List<Registration> getAllRegistrations() {
+    public List<Registration> allRegistrations() {
         return repo.findAll();
     }
-
 
     public void deleteRegistration(int id) {
         Optional<Registration> optReg = repo.findById(id);
