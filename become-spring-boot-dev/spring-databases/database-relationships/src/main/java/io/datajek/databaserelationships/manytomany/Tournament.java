@@ -64,10 +64,13 @@ public class Tournament {
 
     public void addCategory(Category category) {
         playingCategories.add(category);
+        category.getTournaments().add(this);
     }
 
-	public void removeCategory(Category category) {
-		if (playingCategories != null)
-			playingCategories.remove(category);
-	}
+    public void removeCategory(Category category) {
+        if (playingCategories != null) {
+            playingCategories.remove(category);
+        }
+        category.getTournaments().remove(this);
+    }
 }
