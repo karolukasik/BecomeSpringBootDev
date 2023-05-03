@@ -49,3 +49,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# other files
+settings.json
