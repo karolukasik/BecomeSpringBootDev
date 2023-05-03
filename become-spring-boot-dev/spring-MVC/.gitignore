@@ -52,3 +52,7 @@ $RECYCLE.BIN/
 
 # other files
 settings.json
+
+# target
+target/
+```
