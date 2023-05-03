@@ -1,0 +1,25 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- <bean id="contentBasedFilter"
+        class="io.datajek.spring.basics.movierecommendersystem.lesson14.ContentBasedFilter">
+    </bean>
+    <bean id="collaborativeFilter"
+        class="io.datajek.spring.basics.movierecommendersystem.lesson14.CollaborativeFilter">
+    </bean> -->
+    <context:component-scan base-package="io.datajek.spring.basics.movierecommendersystem.lesson14"></context:component-scan>
+    <bean id="recommenderImplementation"
+        class="io.datajek.spring.basics.movierecommendersystem.lesson14.RecommenderImplementation">
+        <!-- the property below requires parameterless constructor -->
+
+        <!-- <property name="filter" ref="collaborativeFilter"></property> -->
+        <!-- for constructor injection use: constructor-arg
+            ref="collaborativeFilter"></constructor-arg-->
+
+
+        <!-- Can be also used wit annotation in the code after defining xmlns:context -->
+    </bean>
+</beans>
