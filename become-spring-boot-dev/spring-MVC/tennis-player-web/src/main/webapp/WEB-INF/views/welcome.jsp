@@ -16,6 +16,10 @@
             </p>
             <p>Today is: <%= currentDate.getDayOfWeek() %>
             </p>
+            <form action="/player.do" method="POST">
+                <b>Player name:</b> <input type="text" name="name" />
+                <input type="submit" value="Enter" />
+            </form>
     </body>
 
     </html>

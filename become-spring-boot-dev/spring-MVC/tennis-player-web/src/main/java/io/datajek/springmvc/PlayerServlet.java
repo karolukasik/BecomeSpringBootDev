@@ -12,12 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = "/player.do")
 public class PlayerServlet extends HttpServlet {
 
+    private PlayerService playerService = new PlayerService();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String playerName = request.getParameter("name");
-        request.setAttribute("name", playerName);
-        request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
-        
+        request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);   
     }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String playerName = request.getParameter("name");
+        Player player = playerService.getPlayerByName(playerName);
+        request.setAttribute("name", playerName);
+        request.setAttribute("country", player.getNationality());
+        request.setAttribute("dob", player.getBirthDate());
+        request.setAttribute("titles", player.getTitles());
+        request.getRequestDispatcher("/WEB-INF/views/info.jsp").forward(request, response);   
+    }
+
 
 }
